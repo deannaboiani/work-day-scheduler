@@ -61,8 +61,19 @@ function colorStatusUpdate() {
 colorStatusUpdate();
 
 $('.saveButton').click(function() {
-    console.log('hi')
+    console.log(this);
+    var task = siblings.$(".description").val();
+   console.log(task)
+
+    
 })
+
+// local storage
+// create item
+
+
+// get item
+// set item
 
 
     
