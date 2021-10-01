@@ -16,6 +16,21 @@
 
 var dateHeaderEL = document.getElementById("date-header")
 
+var task = {
+    "9": [],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [],
+    "14": [],
+    "15": [],
+    "16": [],
+    "17": []
+
+}
+
+
+
 // when the screen is loaded, display the correct date
 
 dateHeader();
@@ -59,14 +74,19 @@ function colorStatusUpdate() {
     })
 };
 colorStatusUpdate();
+var saveButton = $(".saveButton")
+$('.saveButton').click(function(event) {
+    event.preventDefault();
+    var taskText = $("#task")
+    for (let i = 0; i < taskText.length; i++) {
+        taskTextArr = taskText[i];
 
-$('.saveButton').click(function() {
-    console.log(this);
-    var task = siblings.$(".description").val();
-   console.log(task)
+        var taskTextVal = taskTextArr.value;
 
-    
-})
+
+    console.log(localStorage.setItem("task", JSON.stringify(taskTextVal)))
+    }
+})   
 
 // local storage
 // create item
