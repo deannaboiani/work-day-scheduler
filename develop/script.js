@@ -1,6 +1,4 @@
-
-
-//GIVEN I am using a daily planner to create a schedule
+// GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
 // THEN the current day is displayed at the top of the calendar
 // WHEN I scroll down
@@ -14,19 +12,57 @@
 // WHEN I refresh the page
 // THEN the saved events persist
 
-// grabs current hour
-var currentHour = moment().format("HH");
-
-var timeHeaderEL = document.getElementById("time-header")
 
 
-setInterval(timeHeader,500)
-
-function timeHeader(){
-    timeHeaderEL.innerHTML = moment().format('MMMM Do YYYY');
-}
+var dateHeaderEL = document.getElementById("date-header")
 
 // when the screen is loaded, display the correct date
 
+dateHeader();
+setInterval(dateHeader,500)
+
+function dateHeader(){
+    // shows date in the header of the page
+    dateHeaderEL.innerHTML = moment().format('MMMM Do YYYY');
+}
+var timeBlockClass = document.getElementById("time-block")
+
+function colorStatusUpdate() {
+    // grabs current hour
+    var currentHour = moment().format("HH");
+    console.log(currentHour);
+    
+    var timeBlockArr = [];
+    $(".time-block").each(function() {
+        timeBlockArr.push($(this).attr("id"));
+        
+        for (let i = 0; i < timeBlockArr.length; i++) {
+            finalTimeBlockEl = timeBlockArr[i];
+            
+        }
+        
+        if (finalTimeBlockEl < currentHour) {
+            $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+        }
+        else if (finalTimeBlockEl === currentHour) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
+            $(this).removeClass("future");
+        }
+        else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+        }
+    })
+};
+colorStatusUpdate();
+
+$('.saveButton').click(function() {
+    console.log('hi')
+})
 
 
+    
