@@ -74,19 +74,23 @@ function colorStatusUpdate() {
     })
 };
 colorStatusUpdate();
+
+
+
+
 var saveButton = $(".saveButton")
 $('.saveButton').click(function(event) {
     event.preventDefault();
-    var taskText = $("#task")
-    for (let i = 0; i < taskText.length; i++) {
-        taskTextArr = taskText[i];
 
-        var taskTextVal = taskTextArr.value;
+    var taskText = $(this).siblings("#task").val();
+    var listedHour = $(this).parent().attr("id");
+    console.log(taskText, listedHour);
+
+    localStorage.setItem(taskText, listedHour);
 
 
-    console.log(localStorage.setItem("task", JSON.stringify(taskTextVal)))
-    }
-})   
+    })
+
 
 // local storage
 // create item
