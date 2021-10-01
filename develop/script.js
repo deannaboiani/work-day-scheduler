@@ -14,27 +14,12 @@
 
 
 
-var dateHeaderEL = document.getElementById("date-header")
-
-var task = {
-    "9": [],
-    "10": [],
-    "11": [],
-    "12": [],
-    "13": [],
-    "14": [],
-    "15": [],
-    "16": [],
-    "17": []
-
-}
-
-
+var dateHeaderEL = document.getElementById("date-header");
 
 // when the screen is loaded, display the correct date
-
 dateHeader();
 setInterval(dateHeader,500)
+
 
 function dateHeader(){
     // shows date in the header of the page
@@ -81,23 +66,15 @@ colorStatusUpdate();
 var saveButton = $(".saveButton")
 $('.saveButton').click(function(event) {
     event.preventDefault();
-
+    
     var taskText = $(this).siblings("#task").val();
     var listedHour = $(this).parent().attr("id");
-    console.log(taskText, listedHour);
-
-    localStorage.setItem(taskText, listedHour);
-
-
-    })
-
-
-// local storage
-// create item
-
-
-// get item
-// set item
-
-
+    console.log(listedHour, taskText);
     
+    localStorage.setItem(listedHour, taskText);
+    
+    function getTask(){
+            console.log(localStorage.getItem(listedHour));
+    }
+})
+
